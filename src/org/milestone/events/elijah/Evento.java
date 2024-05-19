@@ -44,25 +44,23 @@ public class Evento implements IEvento {
 	}
 
 	@Override
-	public void prenota() {
+	public boolean prenota() {
 		if(checkDate(data) && postiPrenotati < postiTotale) {
-			System.out.println(String.format("Hai prenotato con successo il posto %s, a presto!", postiPrenotati));
 			postiPrenotati++;
+			return true;
 		} else {
-			if(!checkDate(data)) System.out.println("[E (PRENOTA)] L'evento non è più disponibile");
-			else if(!(postiPrenotati < postiTotale)) System.out.println("[E (PRENOTA)] Non ci sono posti disponibili");
+			return false;
 		}
 		
 	}
 
 	@Override
-	public void disdici() {
+	public boolean disdici() {
 		if(checkDate(data) && postiPrenotati != 0) {
-			System.out.println(String.format("Hai disdetto con successo il posto adesso ci sono %s posti disponibili.", (postiTotale - postiPrenotati+1)));
 			postiPrenotati--;
+			return true;
 		} else {
-			if(!checkDate(data)) System.out.println("[E (DISDICI)] L'evento non è più disponibile");
-			else if(!(postiPrenotati != 0)) System.out.println("[E (DISDICI)] Non ci sono prenotazioni da disdire");
+			return false;
 		}
 		
 	}
@@ -73,7 +71,7 @@ public class Evento implements IEvento {
 		return String.format("[EVENTO] %s - %s",data.format(formatter), titolo);
 	}
 	
-	private boolean checkDate(LocalDate data) {
+	public boolean checkDate(LocalDate data) {
 		return (LocalDate.now().isBefore(data) ||  LocalDate.now().equals(data));
 	}
 
