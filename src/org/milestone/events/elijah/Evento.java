@@ -15,8 +15,6 @@ public class Evento implements IEvento {
 		this.data = data;
 		this.titolo = titolo;
 		this.postiTotale = postiTotale;	
-		if(!checkDate(data)) System.out.println("[E (INSTANCE)] La data è precedente alla data corrente");
-		if(postiTotale == 0) System.out.println("[E (INSTANCE)] I posti disponibili devono essere maggiori di 0");
 	}
 
 	public String getTitolo() {
