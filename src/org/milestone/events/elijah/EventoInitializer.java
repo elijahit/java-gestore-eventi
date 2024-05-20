@@ -3,7 +3,7 @@ package org.milestone.events.elijah;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class EventInitializer {
+public class EventoInitializer {
 
 	protected static void initializer() {
 		try {

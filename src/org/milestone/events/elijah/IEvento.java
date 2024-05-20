@@ -2,7 +2,7 @@ package org.milestone.events.elijah;
 
 public interface IEvento {
 	
-	public boolean prenota();
-	public boolean disdici();
+	public boolean prenota(int prenotati);
+	public boolean disdici(int prenotazioniDisdette);
 	
 }

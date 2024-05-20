@@ -6,7 +6,6 @@ public class Prenotazione {
 
 	static void aggiungiPrenotazioni(Evento evento) {
 		try {
-			
 			Scanner scanner = new Scanner(System.in);
 			System.out.println("[?] Vuoi effettuare delle prenotazione? Inserisci: Si o No");
 			String responseBooking = scanner.nextLine();
@@ -19,10 +18,8 @@ public class Prenotazione {
 					aggiungiPrenotazioni(evento);
 				}
 				else {
-					if(evento.checkDate(evento.getData()) && evento.getPostiTotale() > 0) {					
-						for (int i = 0; i < numberOfBooking; i++) {					
-							evento.prenota();
-						}
+					if(evento.checkDate(evento.getData()) && evento.getPostiTotale() > 0) {									
+						evento.prenota(numberOfBooking);
 						Menu.interazione(evento, String.format(ConsoleColors.GREEN + "[SUCCESS] Hai prenotato con successo %s posti, ci sono %s posti disponibili." + ConsoleColors.RESET, numberOfBooking, (evento.getPostiTotale() - evento.getPostiPrenotati())));
 					} else {
 						Menu.interazione(evento, ConsoleColors.RED + "[ERRORE] L'evento è già passato e non puoi effettuare delle prenotazioni." + ConsoleColors.RESET);
@@ -51,10 +48,8 @@ public class Prenotazione {
 					disdiciPrenotazione(evento);
 				}
 				else {
-					if(evento.checkDate(evento.getData()) && evento.getPostiPrenotati() > 0) {					
-						for (int i = 0; i < numberOfBooking; i++) {					
-							evento.disdici();
-						}
+					if(evento.checkDate(evento.getData()) && evento.getPostiPrenotati() > 0) {									
+						evento.disdici(numberOfBooking);
 						Menu.interazione(evento, String.format(ConsoleColors.GREEN + "[SUCCESS] Hai disdetto con successo %s posti, ci sono %s posti disponibili e %s posti prenotati." + ConsoleColors.RESET, numberOfBooking, (evento.getPostiTotale() - evento.getPostiPrenotati()), evento.getPostiPrenotati()));
 					} else {
 						Menu.interazione(evento, ConsoleColors.RED + "[ERRORE] L'evento è già passato e non puoi effettuare delle disdette." + ConsoleColors.RESET);

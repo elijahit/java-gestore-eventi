@@ -42,9 +42,9 @@ public class Evento implements IEvento {
 	}
 
 	@Override
-	public boolean prenota() {
+	public boolean prenota(int prenotati) {
 		if(checkDate(data) && postiPrenotati < postiTotale) {
-			postiPrenotati++;
+			postiPrenotati += prenotati;
 			return true;
 		} else {
 			return false;
@@ -53,9 +53,9 @@ public class Evento implements IEvento {
 	}
 
 	@Override
-	public boolean disdici() {
+	public boolean disdici(int prenotazioniDisdette) {
 		if(checkDate(data) && postiPrenotati != 0) {
-			postiPrenotati--;
+			postiPrenotati -= prenotazioniDisdette;
 			return true;
 		} else {
 			return false;
