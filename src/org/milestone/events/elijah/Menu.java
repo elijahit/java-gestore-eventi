@@ -7,14 +7,14 @@ import java.util.Scanner;
 
 public class Menu {
 
-	public static void principale() {
+	public static void main() {
 		Scanner scanner = new Scanner(System.in);
 		menuPrincipale();
 		menuPrincipale(scanner);
 		scanner.close();
 	}
 
-	public static void principale(String response) {
+	public static void main(String response) {
 		Scanner scanner = new Scanner(System.in);
 		menuPrincipale();
 		System.out.printf("[RESPONSE]: %s\n", response);
@@ -168,7 +168,7 @@ public class Menu {
 			ConcertoInitializer.initializer();
 			break;
 		default:
-			Menu.principale(
+			Menu.main(
 					ConsoleColors.RED + "[ERRORE] La scelta effettuata non è disponibile" + ConsoleColors.RESET);
 
 		}
