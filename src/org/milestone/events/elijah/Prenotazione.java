@@ -15,7 +15,7 @@ public class Prenotazione {
 				System.out.println("[?] Quante prenotazioni vuoi effettuare?");
 				int numberOfBooking = scanner.nextInt();
 				if(numberOfBooking > (evento.getPostiTotale() - evento.getPostiPrenotati())) {
-					System.out.println(String.format("[!] Il numero di posti richiesti è maggiore dei posti disponbili. Ci sono %s posti disponibili", (evento.getPostiTotale() - evento.getPostiPrenotati())));
+					System.out.println(String.format(ConsoleColors.RED + "[!] Il numero di posti richiesti è maggiore dei posti disponbili. Ci sono %s posti disponibili" + ConsoleColors.RESET, (evento.getPostiTotale() - evento.getPostiPrenotati())));
 					aggiungiPrenotazioni(evento);
 				}
 				else {
@@ -23,9 +23,9 @@ public class Prenotazione {
 						for (int i = 0; i < numberOfBooking; i++) {					
 							evento.prenota();
 						}
-						Menu.interazione(evento, String.format("[SUCCESS] Hai prenotato con successo %s posti, ci sono %s posti disponibili.", numberOfBooking, (evento.getPostiTotale() - evento.getPostiPrenotati())));
+						Menu.interazione(evento, String.format(ConsoleColors.GREEN + "[SUCCESS] Hai prenotato con successo %s posti, ci sono %s posti disponibili." + ConsoleColors.RESET, numberOfBooking, (evento.getPostiTotale() - evento.getPostiPrenotati())));
 					} else {
-						Menu.interazione(evento, "[ERRORE] L'evento è già passato e non puoi effettuare delle prenotazioni.");
+						Menu.interazione(evento, ConsoleColors.RED + "[ERRORE] L'evento è già passato e non puoi effettuare delle prenotazioni." + ConsoleColors.RESET);
 					}
 				}
 			} else {
@@ -33,7 +33,7 @@ public class Prenotazione {
 			}
 			scanner.close();
 		} catch (Exception e) {
-			Menu.interazione(evento, "[ERRORE] Abbiamo rilevato un errore ricontrolla i dati inseriti, assicurati di inserire un numero e non una stringa.");
+			Menu.interazione(evento, ConsoleColors.RED + "[ERRORE] Abbiamo rilevato un errore ricontrolla i dati inseriti, assicurati di inserire un numero e non una stringa." + ConsoleColors.RESET);
 		}
 	}
 	
@@ -47,7 +47,7 @@ public class Prenotazione {
 				System.out.println("[?] Quante prenotazioni vuoi disdire?");
 				int numberOfBooking = scanner.nextInt();
 				if(numberOfBooking > evento.getPostiPrenotati()) {
-					System.out.println(String.format("[!] Il numero di posti richiesti è minore dei posti prenotati. Ci sono %s posti prenotati.", (evento.getPostiPrenotati())));
+					System.out.println(String.format(ConsoleColors.RED + "[!] Il numero di posti richiesti è minore dei posti prenotati. Ci sono %s posti prenotati." + ConsoleColors.RESET, (evento.getPostiPrenotati())));
 					disdiciPrenotazione(evento);
 				}
 				else {
@@ -55,9 +55,9 @@ public class Prenotazione {
 						for (int i = 0; i < numberOfBooking; i++) {					
 							evento.disdici();
 						}
-						Menu.interazione(evento, String.format("[SUCCESS] Hai disdetto con successo %s posti, ci sono %s posti disponibili e %s posti prenotati.", numberOfBooking, (evento.getPostiTotale() - evento.getPostiPrenotati()), evento.getPostiPrenotati()));
+						Menu.interazione(evento, String.format(ConsoleColors.GREEN + "[SUCCESS] Hai disdetto con successo %s posti, ci sono %s posti disponibili e %s posti prenotati." + ConsoleColors.RESET, numberOfBooking, (evento.getPostiTotale() - evento.getPostiPrenotati()), evento.getPostiPrenotati()));
 					} else {
-						Menu.interazione(evento, "[ERRORE] L'evento è già passato e non puoi effettuare delle disdette.");
+						Menu.interazione(evento, ConsoleColors.RED + "[ERRORE] L'evento è già passato e non puoi effettuare delle disdette." + ConsoleColors.RESET);
 					}
 				}
 			} else {
@@ -65,7 +65,7 @@ public class Prenotazione {
 			}
 			scanner.close();
 		} catch (Exception e) {
-			Menu.interazione(evento, "[ERRORE] Abbiamo rilevato un errore ricontrolla i dati inseriti, assicurati di inserire un numero e non una stringa.");
+			Menu.interazione(evento, ConsoleColors.RED + "[ERRORE] Abbiamo rilevato un errore ricontrolla i dati inseriti, assicurati di inserire un numero e non una stringa." + ConsoleColors.RESET);
 		}
 	}
 
