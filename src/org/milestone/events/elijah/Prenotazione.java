@@ -20,17 +20,17 @@ public class Prenotazione {
 				else {
 					if(evento.checkDate(evento.getData()) && evento.getPostiTotale() > 0) {									
 						evento.prenota(numberOfBooking);
-						Menu.interazione(evento, String.format(ConsoleColors.GREEN + "[SUCCESS] Hai prenotato con successo %s posti, ci sono %s posti disponibili." + ConsoleColors.RESET, numberOfBooking, (evento.getPostiTotale() - evento.getPostiPrenotati())));
+						MenuInterazione.principale(evento, String.format(ConsoleColors.GREEN + "[SUCCESS] Hai prenotato con successo %s posti, ci sono %s posti disponibili." + ConsoleColors.RESET, numberOfBooking, (evento.getPostiTotale() - evento.getPostiPrenotati())));
 					} else {
-						Menu.interazione(evento, ConsoleColors.RED + "[ERRORE] L'evento è già passato e non puoi effettuare delle prenotazioni." + ConsoleColors.RESET);
+						MenuInterazione.principale(evento, ConsoleColors.RED + "[ERRORE] L'evento è già passato e non puoi effettuare delle prenotazioni." + ConsoleColors.RESET);
 					}
 				}
 			} else {
-				Menu.interazione(evento);
+				MenuInterazione.principale(evento);
 			}
 			scanner.close();
 		} catch (Exception e) {
-			Menu.interazione(evento, ConsoleColors.RED + "[ERRORE] Abbiamo rilevato un errore ricontrolla i dati inseriti, assicurati di inserire un numero e non una stringa." + ConsoleColors.RESET);
+			MenuInterazione.principale(evento, ConsoleColors.RED + "[ERRORE] Abbiamo rilevato un errore ricontrolla i dati inseriti, assicurati di inserire un numero e non una stringa." + ConsoleColors.RESET);
 		}
 	}
 	
@@ -50,17 +50,17 @@ public class Prenotazione {
 				else {
 					if(evento.checkDate(evento.getData()) && evento.getPostiPrenotati() > 0) {									
 						evento.disdici(numberOfBooking);
-						Menu.interazione(evento, String.format(ConsoleColors.GREEN + "[SUCCESS] Hai disdetto con successo %s posti, ci sono %s posti disponibili e %s posti prenotati." + ConsoleColors.RESET, numberOfBooking, (evento.getPostiTotale() - evento.getPostiPrenotati()), evento.getPostiPrenotati()));
+						MenuInterazione.principale(evento, String.format(ConsoleColors.GREEN + "[SUCCESS] Hai disdetto con successo %s posti, ci sono %s posti disponibili e %s posti prenotati." + ConsoleColors.RESET, numberOfBooking, (evento.getPostiTotale() - evento.getPostiPrenotati()), evento.getPostiPrenotati()));
 					} else {
-						Menu.interazione(evento, ConsoleColors.RED + "[ERRORE] L'evento è già passato e non puoi effettuare delle disdette." + ConsoleColors.RESET);
+						MenuInterazione.principale(evento, ConsoleColors.RED + "[ERRORE] L'evento è già passato e non puoi effettuare delle disdette." + ConsoleColors.RESET);
 					}
 				}
 			} else {
-				Menu.interazione(evento);
+				MenuInterazione.principale(evento);
 			}
 			scanner.close();
 		} catch (Exception e) {
-			Menu.interazione(evento, ConsoleColors.RED + "[ERRORE] Abbiamo rilevato un errore ricontrolla i dati inseriti, assicurati di inserire un numero e non una stringa." + ConsoleColors.RESET);
+			MenuInterazione.principale(evento, ConsoleColors.RED + "[ERRORE] Abbiamo rilevato un errore ricontrolla i dati inseriti, assicurati di inserire un numero e non una stringa." + ConsoleColors.RESET);
 		}
 	}
 

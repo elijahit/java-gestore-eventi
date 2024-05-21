@@ -44,7 +44,7 @@ public class ConcertoInitializer {
 				errori += "[E (INSTANCE)] La data è precedente alla data corrente\n";
 			if (evento.getPostiTotale() == 0)
 				errori += "[E (INSTANCE)] I posti disponibili devono essere maggiori di 0";
-			Menu.interazione(evento,
+			MenuInterazione.principale(evento,
 					String.format("L'evento è stato instanziato con successo:\n%s\n%s", evento, errori));
 			scanner.close();
 		} catch (Exception e) {
@@ -91,7 +91,7 @@ public class ConcertoInitializer {
 				errori += "[E (INSTANCE)] La data è precedente alla data corrente\n";
 			if (evento.getPostiTotale() == 0)
 				errori += "[E (INSTANCE)] I posti disponibili devono essere maggiori di 0";
-			Menu.interazione(evento,
+			MenuInterazione.principale(evento,
 					String.format("L'evento è stato instanziato con successo:\n%s\n%s", evento, errori));
 			scanner.close();
 		} catch (Exception e) {
