@@ -35,7 +35,6 @@ public class MenuInterazione extends Menu {
 
 	public static void principale(Concerto evento, String response) {
 		Scanner scanner = new Scanner(System.in);
-		spaceConsole();
 		displayMenuPrincipale();
 		System.out.println();
 		System.out.printf(ConsoleColors.YELLOW_BRIGHT + "[RESPONSE]: " + ConsoleColors.RESET + "%s\n", response);
@@ -47,29 +46,30 @@ public class MenuInterazione extends Menu {
 	private static void displayMenuPrincipale() {
 		displayHeaderConsole();
 		System.out.println(ConsoleColors.YELLOW_BRIGHT + "MENU APPLICAZIONE: \n" + ConsoleColors.RESET
-				+ "[1]: (Re)Istanzia evento\n" + "[2]: Aggiungi prenotazioni\n" + "[3]: Disdici prenotazioni\n"
-				+ "[4]: Visualizza l'evento");
+				+ "[1]: Aggiungi prenotazioni\n" + "[2]: Disdici prenotazioni\n"
+				+ "[3]: Visualizza l'evento\n"
+				+ "[4]: Ritorna al menu principale");
 	}
 
 	private static void menuPrincipale(Evento evento, Scanner scanner) {
 		try { 			
 			switch (scanner.nextInt()) {
 			case 1:
-				EventoInitializer.initializer();
-				break;
-			case 2:
 				Prenotazione.aggiungiPrenotazioni(evento);
 				break;
-			case 3:
+			case 2:
 				Prenotazione.disdiciPrenotazione(evento);
 				break;
-			case 4:
+			case 3:
 				principale(evento,
 						String.format(
 								"\n[EVENTO: %s]\n" + "POSTI TOTALI: %s\n" + "POSTI PRENOTATI: %s\n"
 										+ "POSTI DISPONIBILI: %s\n" + "DATA EVENTO: %s",
 										evento.getTitolo(), evento.getPostiTotale(), evento.getPostiPrenotati(),
 										(evento.getPostiTotale() - evento.getPostiPrenotati()), evento.getDataFormattata()));
+				break;
+			case 4:
+				MenuIniziale.principale();
 				break;
 			default:
 				MenuInterazione.principale(evento,
@@ -85,21 +85,21 @@ public class MenuInterazione extends Menu {
 		try {			
 			switch (scanner.nextInt()) {
 			case 1:
-				ConcertoInitializer.initializer();
-				break;
-			case 2:
 				Prenotazione.aggiungiPrenotazioni(evento);
 				break;
-			case 3:
+			case 2:
 				Prenotazione.disdiciPrenotazione(evento);
 				break;
-			case 4:
+			case 3:
 				principale(evento, String.format(
 						"\n[EVENTO: %s]\n" + "POSTI TOTALI: %s\n" + "POSTI PRENOTATI: %s\n" + "POSTI DISPONIBILI: %s\n"
 								+ "DATA EVENTO: %s\n" + "ORA EVENTO: %s\n" + "PREZZO EVENTO: %s",
 								evento.getTitolo(), evento.getPostiTotale(), evento.getPostiPrenotati(),
 								(evento.getPostiTotale() - evento.getPostiPrenotati()), evento.getDataFormattata(),
 								evento.getOraFormattata(), evento.getPrezzoFormattato()));
+				break;
+			case 4:
+				MenuIniziale.principale();
 				break;
 			default:
 				MenuInterazione.principale(evento,

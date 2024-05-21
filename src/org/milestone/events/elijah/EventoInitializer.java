@@ -28,6 +28,7 @@ public class EventoInitializer {
 			scanner.nextLine();
 
 			Evento evento = new Evento(title, LocalDate.of(yearOfEvents, monthOfEvents, dayOfEvents), slotOfEvents);
+			MenuIniziale.evento.addEvents(evento);
 			String errori = "";
 			if (!evento.checkDate(evento.getData()))
 				errori += "[E (INSTANCE)] La data è precedente alla data corrente\n";
@@ -65,6 +66,7 @@ public class EventoInitializer {
 			scanner.nextLine();
 
 			Evento evento = new Evento(title, LocalDate.of(yearOfEvents, monthOfEvents, dayOfEvents), slotOfEvents);
+			MenuIniziale.evento.addEvents(evento);
 			String errori = "";
 			if (!evento.checkDate(evento.getData()))
 				errori += "[E (INSTANCE)] La data è precedente alla data corrente\n";

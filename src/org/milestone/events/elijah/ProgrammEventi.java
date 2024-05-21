@@ -21,8 +21,8 @@ public class ProgrammEventi {
 	public String getEvents() {
 		String events = "";
 		if(eventi.size() > 0) {			
-			for(Evento e: eventi) {
-				events += e +"\n";
+			for(int i = 0; i < eventi.size(); i++) {			
+				events += String.format("[%s] ", i) + eventi.get(i) +"\n";
 			}
 		} else {
 			events = "Nessun evento disponibile";
@@ -33,10 +33,13 @@ public class ProgrammEventi {
 	public String getEvents(LocalDate date) {
 		String events = "";
 		if(eventi.size() > 0) {			
-			for(Evento e: eventi) {
-				if(date.equals(e.getData())) {					
-					events += e +"\n";
+			for(int i = 0; i < eventi.size(); i++) {
+				if(date.equals(eventi.get(i).getData())) {					
+					events += String.format("[%s] ", i) + eventi.get(i) +"\n";
 				}
+			}
+			if(events.length() == 0) {
+				events = "Nessun evento disponibile";
 			}
 		} else {
 			events = "Nessun evento disponibile";
