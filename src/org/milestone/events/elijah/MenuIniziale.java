@@ -70,6 +70,7 @@ public class MenuIniziale extends Menu {
 		try { 			
 			switch (scanner.nextInt()) {
 			case 1:
+				spaceConsole();
 				MenuAddEventi.principale();
 				break;
 			case 2:
