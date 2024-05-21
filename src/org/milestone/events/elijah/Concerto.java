@@ -28,15 +28,25 @@ public class Concerto extends Evento {
 	public double getPrezzo() {
 		return prezzo;
 	}
+	
+	
+	public String getOraFormattata() {
+		DateTimeFormatter formatterHour = DateTimeFormatter.ofPattern("HH:mm", Locale.ITALIAN);
+		return "" + getOra().format(formatterHour);
+		
+	}
 
 	public void setPrezzo(double prezzo) {
 		this.prezzo = prezzo;
 	}
+	
+	public String getPrezzoFormattato() {
+		DecimalFormat formatterPrice = new DecimalFormat("#00.00");  
+		return "" + formatterPrice.format(getPrezzo()) + "€";
+	}
 
 	@Override
 	public String toString() {
-		DateTimeFormatter formatterHour = DateTimeFormatter.ofPattern("HH:mm", Locale.ITALIAN);
-		DecimalFormat formatterPrice = new DecimalFormat("#00.00");   
-		return super.toString() + " | ORE: " + getOra().format(formatterHour) + " | PREZZO: " + formatterPrice.format(getPrezzo());
+		return String.format("%s - %s | %s - %s", super.getDataFormattata(), getOraFormattata(), super.getTitolo(), getPrezzoFormattato());
 	}
 }

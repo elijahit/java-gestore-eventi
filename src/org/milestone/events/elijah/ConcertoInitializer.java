@@ -32,7 +32,7 @@ public class ConcertoInitializer {
 			int minuteOfEvents = scanner.nextInt();
 			if (minuteOfEvents > 59 || minuteOfEvents < 0)
 				initializer(ConsoleColors.RED + "[!] I minuti devono essere tra le 0 e le 59" + ConsoleColors.RESET);
-			System.out.println("Inserisci il prezzo del tuo evento (ex 22.50) non inserire la virgola (,) ma il punto (.)");
+			System.out.println("Inserisci il prezzo del tuo evento (ex 22,50) non inserire il punto (.) ma la virgola (,)");
 			double prezzoOfEvents = scanner.nextDouble();
 			System.out.println("Inserisci Il numero di posti che concerto può contenere:");
 			int slotOfEvents = scanner.nextInt();

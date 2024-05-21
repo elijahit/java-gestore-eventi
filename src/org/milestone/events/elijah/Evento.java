@@ -32,6 +32,12 @@ public class Evento implements IEvento {
 	public void setData(LocalDate data) {
 		this.data = data;
 	}
+	
+	public String getDataFormattata() {
+		DateTimeFormatter formatterDate = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ITALIAN);
+		return "" + getData().format(formatterDate);
+		
+	}
 
 	public int getPostiTotale() {
 		return postiTotale;
