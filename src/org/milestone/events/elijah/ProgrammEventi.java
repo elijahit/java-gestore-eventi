@@ -14,9 +14,15 @@ public class ProgrammEventi {
 		eventi = new ArrayList<>();
 	}
 	
+	public Evento getObjectEvents(int i) {
+		if(eventi.get(i) == null) return null;
+		return eventi.get(i);
+	}
+	
 	public void addEvents(Evento evento) {
 		eventi.add(evento);
 	}
+	
 	
 	public String getEvents() {
 		String events = "";

@@ -29,11 +29,12 @@ public class MenuIniziale extends Menu {
 	private static void displayMenuPrincipale() {
 		displayHeaderConsole();
 		System.out.println(ConsoleColors.YELLOW_BRIGHT + "MENU APPLICAZIONE: \n" + ConsoleColors.RESET
-				+ "[1]: Aggiungi Evento\n" 
-				+ "[2]: Vedi Eventi\n" 
-				+ "[3]: Vedi Eventi (In data specifica)\n"
-				+ "[4]: Vedi Programmazione\n"
-				+ "[5]: Resetta la Programmazione");
+				+ "[1]: Aggiungi Evento\n"
+				+ "[2]: Seleziona Evento\n" 
+				+ "[3]: Vedi Eventi\n" 
+				+ "[4]: Vedi Eventi (In data specifica)\n"
+				+ "[5]: Vedi Programmazione\n"
+				+ "[6]: Resetta la Programmazione");
 	}
 	private static void eventsByDate() {
 		Scanner scanner = new Scanner(System.in);
@@ -52,6 +53,18 @@ public class MenuIniziale extends Menu {
 		scanner.close();
 		
 	}
+	
+	private static void selectEvents() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Inseriscimi l'id dell'evento che vuoi gestire");
+		int id = scanner.nextInt();
+		if(evento.getObjectEvents(id) != null) {			
+			MenuInterazione.principale(evento.getObjectEvents(id));
+		} else {
+			principale(ConsoleColors.RED + "[ERRORE] La scelta effettuata non è disponibile" + ConsoleColors.RESET);
+		}
+		scanner.close();
+	}
 
 	private static void menuPrincipale(Scanner scanner) {
 		try { 			
@@ -60,15 +73,18 @@ public class MenuIniziale extends Menu {
 				MenuAddEventi.principale();
 				break;
 			case 2:
-				principale("\n" + evento.getEvents());
+				selectEvents();
 				break;
 			case 3:
-				eventsByDate();
+				principale("\n" + evento.getEvents());
 				break;
 			case 4:
-				principale("\n" + evento.getProgrammazione());
+				eventsByDate();
 				break;
 			case 5:
+				principale("\n" + evento.getProgrammazione());
+				break;
+			case 6:
 				evento.resetEvents();
 				principale(ConsoleColors.GREEN + "[SUCCESS] La programmazione è stata resettata, nessun evento è più disponibile" + ConsoleColors.RESET);
 				break;
